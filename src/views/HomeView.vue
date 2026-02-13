@@ -77,78 +77,78 @@
   </SidebarProvider>
 </template>
 <script setup lang="ts">
-  import SidebarComponent from '@/components/SidebarComponent.vue';
-  import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-  } from '@/components/ui/breadcrumb';
-  import { Separator } from "@/components/ui/separator";
-  import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-  import { Input } from '@/components/ui/input';
-  import { Label } from '@/components/ui/label';
-  import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-  import WorkforceTable from '@/components/WorkforceTable.vue';
-  import { CheckCircle, Loader2 } from 'lucide-vue-next';
-  import { ref } from 'vue';
+import SidebarComponent from '@/components/SidebarComponent.vue';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import WorkforceTable from '@/components/WorkforceTable.vue';
+import { CheckCircle, Loader2 } from 'lucide-vue-next';
+import { ref } from 'vue';
 
-  // State
-  const isUploading = ref(false);
-  const uploadStatus = ref<'idle' | 'success' | 'error'>('idle');
-  const fileName = ref('');
-  const tableData = ref<any[]>([]);
-  const tableHeaders = ref<string[]>([]);
+// State
+const isUploading = ref(false);
+const uploadStatus = ref<'idle' | 'success' | 'error'>('idle');
+const fileName = ref('');
+const tableData = ref<any[]>([]);
+const tableHeaders = ref<string[]>([]);
 
-  // Mock Data (Simulating Excel content)
-  const mockData = [
-    { ID: '1001', Name: 'Somchai', Position: 'Engineer', Department: 'Network', Status: 'Active' },
-    { ID: '1002', Name: 'Somsri', Position: 'Accountant', Department: 'Finance', Status: 'Active' },
-    {
-      ID: '1003',
-      Name: 'Damrong',
-      Position: 'Technician',
-      Department: 'Maintenance',
-      Status: 'On Leave',
-    },
-    {
-      ID: '1004',
-      Name: 'Wilai',
-      Position: 'HR Officer',
-      Department: 'Human Resource',
-      Status: 'Active',
-    },
-    {
-      ID: '1005',
-      Name: 'Prawit',
-      Position: 'Manager',
-      Department: 'Management',
-      Status: 'Retired',
-    },
-  ];
+// Mock Data (Simulating Excel content)
+const mockData = [
+  { ID: '1001', Name: 'Somchai', Position: 'Engineer', Department: 'Network', Status: 'Active' },
+  { ID: '1002', Name: 'Somsri', Position: 'Accountant', Department: 'Finance', Status: 'Active' },
+  {
+    ID: '1003',
+    Name: 'Damrong',
+    Position: 'Technician',
+    Department: 'Maintenance',
+    Status: 'On Leave',
+  },
+  {
+    ID: '1004',
+    Name: 'Wilai',
+    Position: 'HR Officer',
+    Department: 'Human Resource',
+    Status: 'Active',
+  },
+  {
+    ID: '1005',
+    Name: 'Prawit',
+    Position: 'Manager',
+    Department: 'Management',
+    Status: 'Retired',
+  },
+];
 
-  const handleFileUpload = (event: Event) => {
-    const target = event.target as HTMLInputElement;
-    const file = target.files?.[0];
+const handleFileUpload = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const file = target.files?.[0];
 
-    if (file) {
-      fileName.value = file.name;
-      isUploading.value = true;
-      uploadStatus.value = 'idle';
-      tableData.value = [];
-      tableHeaders.value = [];
+  if (file) {
+    fileName.value = file.name;
+    isUploading.value = true;
+    uploadStatus.value = 'idle';
+    tableData.value = [];
+    tableHeaders.value = [];
 
-      // Simulate file processing delay
-      setTimeout(() => {
-        isUploading.value = false;
-        uploadStatus.value = 'success';
-        tableData.value = mockData;
-        if (mockData.length > 0 && mockData[0]) {
-          tableHeaders.value = Object.keys(mockData[0]);
-        }
-      }, 1500);
-    }
-  };
+    // Simulate file processing delay
+    setTimeout(() => {
+      isUploading.value = false;
+      uploadStatus.value = 'success';
+      tableData.value = mockData;
+      if (mockData.length > 0 && mockData[0]) {
+        tableHeaders.value = Object.keys(mockData[0]);
+      }
+    }, 1500);
+  }
+};
 </script>

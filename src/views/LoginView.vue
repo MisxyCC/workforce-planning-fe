@@ -81,17 +81,17 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-  const router = useRouter();
-  const isLoading = ref(false);
+const router = useRouter();
+const isLoading = ref(false);
 
-  const handleLogin = async () => {
-    isLoading.value = true;
-    // จำลองการเรียก API Login
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    isLoading.value = false;
-    router.push('/home');
-  };
+const handleLogin = async () => {
+  isLoading.value = true;
+  // จำลองการเรียก API Login
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  isLoading.value = false;
+  router.push('/home');
+};
 </script>

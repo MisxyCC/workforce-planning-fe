@@ -1,0 +1,12 @@
+# ไฟล์และโฟลเดอร์ที่ไม่ต้องการให้ Prettier เข้าไปยุ่ง
+dist/
+dist-ssr/
+coverage/
+node_modules/
+public/
+.git/
+
+# ไฟล์ล็อคเวอร์ชัน
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
