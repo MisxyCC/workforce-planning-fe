@@ -3,4 +3,5 @@ export interface SidebarMenuItem {
   url: string;
   icon: any;
   isHidden?: boolean;
+  isSelected: boolean;
 }

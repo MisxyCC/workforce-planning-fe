@@ -10,41 +10,48 @@ import {
   SidebarMenuButton,
   SidebarMenuItem as SidebarMenuItemComponent,
 } from '@/components/ui/sidebar';
+import { PROJECT_NAME } from '@/constants';
 import type { SidebarMenuItem } from '@/models/sidebarMenu';
-import { Calendar, Home, Inbox, LogOut, Search, Settings } from 'lucide-vue-next';
+import { Calendar, Home, LogOut, Search, Settings, Upload } from 'lucide-vue-next';
 
 // Menu items.
 const items: SidebarMenuItem[] = [
   {
-    title: 'Home',
-    url: '#',
+    title: 'หน้าแรก',
+    url: '/home',
     icon: Home,
+    isSelected: false,
   },
   {
-    title: 'Inbox',
-    url: '#',
-    icon: Inbox,
+    title: 'นำเข้าข้อมูลจาก SAP',
+    url: '',
+    icon: Upload,
+    isSelected: false,
   },
   {
     title: 'Calendar',
-    url: '#',
+    url: '',
     icon: Calendar,
+    isSelected: false,
   },
   {
     title: 'Search',
-    url: '#',
+    url: '',
     icon: Search,
+    isSelected: false,
   },
   {
     title: 'Settings',
-    url: '#',
+    url: '',
     icon: Settings,
     isHidden: false,
+    isSelected: false,
   },
   {
     title: 'ออกจากระบบ',
     url: '/',
     icon: LogOut,
+    isSelected: false,
   },
 ];
 </script>
@@ -70,7 +77,7 @@ const items: SidebarMenuItem[] = [
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
         </div>
-        <span class="text-md font-bold text-pea text-center">Workforce Planning System NE1</span>
+        <span class="text-md font-bold text-pea text-center">{{ PROJECT_NAME }}</span>
       </div>
     </SidebarHeader>
     <SidebarContent>
@@ -80,10 +87,10 @@ const items: SidebarMenuItem[] = [
           <SidebarMenu>
             <SidebarMenuItemComponent v-for="item in items" :key="item.title">
               <SidebarMenuButton as-child v-if="!item.isHidden">
-                <a :href="item.url">
+                <RouterLink :to="item.url">
                   <component :is="item.icon" />
                   <span>{{ item.title }}</span>
-                </a>
+                </RouterLink>
               </SidebarMenuButton>
             </SidebarMenuItemComponent>
           </SidebarMenu>

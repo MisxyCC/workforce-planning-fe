@@ -25,7 +25,7 @@
         <h1 class="text-2xl font-bold tracking-tight text-gray-900 text-center">
           Workforce Planning System NE1
         </h1>
-        <p class="text-sm text-gray-500 mt-2">ระบบวางแผนอัตรากำลัง กฟฉ.1</p>
+        <p class="text-base text-gray-500 mt-2">ระบบวางแผนอัตรากำลัง กฟฉ.1</p>
       </div>
 
       <!-- Login Form -->
@@ -73,7 +73,7 @@
       </form>
 
       <div class="mt-10 text-center">
-        <p class="text-[11px] text-gray-400 uppercase tracking-wider">
+        <p class="text-base text-gray-400 uppercase tracking-wider">
           การไฟฟ้าส่วนภูมิภาค | Provincial Electricity Authority
         </p>
       </div>
