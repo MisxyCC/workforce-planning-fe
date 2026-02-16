@@ -21,6 +21,11 @@ const router = createRouter({
           name: 'home',
           component: () => import('../views/HomeView.vue'),
         },
+        {
+          path: 'excel-uploader',
+          name: 'excel-uploader',
+          component: () => import('../views/ExcelUploaderView.vue'),
+        },
       ],
     },
   ],

@@ -10,9 +10,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem as SidebarMenuItemComponent,
 } from '@/components/ui/sidebar';
-import { PROJECT_NAME } from '@/constants';
+import { APP_NAME } from '@/constants';
 import type { SidebarMenuItem } from '@/models/sidebarMenu';
-import { Calendar, Home, LogOut, Search, Settings, Upload } from 'lucide-vue-next';
+import { Home, LogOut, Upload } from 'lucide-vue-next';
+import { useRoute, type RouteLocationNormalizedLoaded } from 'vue-router';
 
 // Menu items.
 const items: SidebarMenuItem[] = [
@@ -24,27 +25,8 @@ const items: SidebarMenuItem[] = [
   },
   {
     title: 'นำเข้าข้อมูลจาก SAP',
-    url: '',
+    url: '/excel-uploader',
     icon: Upload,
-    isSelected: false,
-  },
-  {
-    title: 'Calendar',
-    url: '',
-    icon: Calendar,
-    isSelected: false,
-  },
-  {
-    title: 'Search',
-    url: '',
-    icon: Search,
-    isSelected: false,
-  },
-  {
-    title: 'Settings',
-    url: '',
-    icon: Settings,
-    isHidden: false,
     isSelected: false,
   },
   {
@@ -54,6 +36,8 @@ const items: SidebarMenuItem[] = [
     isSelected: false,
   },
 ];
+
+const route: RouteLocationNormalizedLoaded  = useRoute();
 </script>
 
 <template>
@@ -77,7 +61,7 @@ const items: SidebarMenuItem[] = [
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
         </div>
-        <span class="text-md font-bold text-pea text-center">{{ PROJECT_NAME }}</span>
+        <span class="text-md font-bold text-pea text-center">{{ APP_NAME }}</span>
       </div>
     </SidebarHeader>
     <SidebarContent>
@@ -86,7 +70,12 @@ const items: SidebarMenuItem[] = [
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItemComponent v-for="item in items" :key="item.title">
-              <SidebarMenuButton as-child v-if="!item.isHidden">
+              <SidebarMenuButton
+                as-child
+                v-if="!item.isHidden"
+                :isActive="route.path === item.url"
+                class="data-[active=true]:bg-blue-50 data-[active=true]:text-blue-600"
+              >
                 <RouterLink :to="item.url">
                   <component :is="item.icon" />
                   <span>{{ item.title }}</span>

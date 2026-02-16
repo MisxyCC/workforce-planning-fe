@@ -5,11 +5,11 @@
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem class="hidden md:block">
-          <BreadcrumbLink href="#"> Workforce Planning System NE1</BreadcrumbLink>
+          <BreadcrumbLink href="#">{{ APP_NAME }}</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator class="hidden md:block" />
         <BreadcrumbItem>
-          <BreadcrumbPage>1. นำเข้าข้อมูลพนักงานจาก SAP</BreadcrumbPage>
+          <BreadcrumbPage>{{ HOME_PAGE_TITLE }}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
@@ -86,6 +86,7 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import WorkforceTable from '@/components/WorkforceTable.vue';
+import { APP_NAME, HOME_PAGE_TITLE } from '@/constants';
 import { CheckCircle, Loader2 } from 'lucide-vue-next';
 import { ref } from 'vue';
 

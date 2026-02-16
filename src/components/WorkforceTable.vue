@@ -77,7 +77,7 @@
           </template>
 
           <TableRow v-else>
-            <TableCell :colspan="columns.length" class="h-24 text-center"> No results. </TableCell>
+            <TableCell :colspan="columns.length" class="h-24 text-center"> ไม่มีข้อมูล </TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -114,6 +114,7 @@ import type {
   ColumnDef,
   ColumnFiltersState,
   ExpandedState,
+  PaginationState,
   SortingState,
   VisibilityState,
 } from '@tanstack/vue-table';
@@ -285,6 +286,10 @@ const columnVisibility = ref<VisibilityState>({});
 const rowSelection = ref({});
 const expanded = ref<ExpandedState>({});
 const globalFilter = ref('');
+const pagination = ref<PaginationState>({
+  pageIndex: 0,
+  pageSize: 5,
+});
 
 const table = useVueTable({
   data,
@@ -300,6 +305,7 @@ const table = useVueTable({
   onRowSelectionChange: (updaterOrValue) => valueUpdater(updaterOrValue, rowSelection),
   onExpandedChange: (updaterOrValue) => valueUpdater(updaterOrValue, expanded),
   onGlobalFilterChange: (updaterOrValue) => valueUpdater(updaterOrValue, globalFilter),
+  onPaginationChange: (updaterOrValue) => valueUpdater(updaterOrValue, pagination),
   state: {
     get sorting() {
       return sorting.value;
@@ -318,6 +324,9 @@ const table = useVueTable({
     },
     get globalFilter() {
       return globalFilter.value;
+    },
+    get pagination() {
+      return pagination.value;
     },
   },
 });
